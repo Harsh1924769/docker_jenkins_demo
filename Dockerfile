@@ -1,10 +1,11 @@
-FROM  python:3.9-slim-buster
+FROM python:3.11-slim
 
-WORKDIR    /ditiss_python
-COPY    .     /ditiss_python
+WORKDIR /ditiss_python
 
-RUN   pip    install  -r   requirements.txt
+COPY requirements.txt .
 
-EXPOSE     5000
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "app.py"]
+COPY . .
+
+EXPOSE 5000
